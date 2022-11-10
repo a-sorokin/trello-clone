@@ -15,6 +15,7 @@ type TBoardProps = {
   cards: TCard[];
   addCard: (name: string, columnId: string) => void;
   changeCardName: (newName: string, cardId: string) => void;
+  moveCard: (dir: 'right' | 'left', cardId: string) => void;
 };
 
 export const Board: FC<TBoardProps> = ({
@@ -25,6 +26,7 @@ export const Board: FC<TBoardProps> = ({
   cards,
   addCard,
   changeCardName,
+  moveCard,
 }) => {
   const changeNameHandler = useCallback(
     (name: string, position: number) => changeListName(name, position),
@@ -51,10 +53,13 @@ export const Board: FC<TBoardProps> = ({
                   .map(card => (
                     <Card
                       key={card.id}
-                      name={card.name}
+                      card={card}
+                      first={c.position === 0}
+                      last={c.position === columns.length - 1}
                       changeCardName={(name: string) => {
                         changeCardName(name, card.id);
                       }}
+                      moveCard={dir => moveCard(dir, card.id)}
                     />
                   ))}
                 <AddCard addCard={name => addCard(name, c.id)} />

@@ -16,8 +16,8 @@ export const BoardAdapter = () => {
 
   const addList = useCallback(
     (list: TBoardColumn) => {
-      const bIndex = boards.findIndex(b => b.id === boardId);
-      boards[bIndex].columns.push(list);
+      const boardIndex = boards.findIndex(b => b.id === boardId);
+      boards[boardIndex].columns.push(list);
       setStore({ boards });
     },
     [boardId, boards, setStore]
@@ -25,8 +25,8 @@ export const BoardAdapter = () => {
 
   const changeListName = useCallback(
     (newName: string, position: number) => {
-      const bIndex = boards.findIndex(b => b.id === boardId);
-      boards[bIndex].columns[position].name = newName;
+      const boardIndex = boards.findIndex(b => b.id === boardId);
+      boards[boardIndex].columns[position].name = newName;
       setStore({ boards });
     },
     [boardId, boards, setStore]
@@ -35,8 +35,8 @@ export const BoardAdapter = () => {
   const addCard = useCallback(
     (name: string, columnId: string) => {
       const card = { id: uuidv4(), name, columnId, description: '' };
-      const bIndex = boards.findIndex(b => b.id === boardId);
-      boards[bIndex].cards.push(card);
+      const boardIndex = boards.findIndex(b => b.id === boardId);
+      boards[boardIndex].cards.push(card);
       setStore({ boards });
     },
     [boardId, boards, setStore]
@@ -44,12 +44,34 @@ export const BoardAdapter = () => {
 
   const changeCardName = useCallback(
     (newName: string, cardId: string) => {
-      const bIndex = boards.findIndex(b => b.id === boardId);
-      const cardIndex = boards[bIndex].cards.findIndex(c => c.id === cardId);
-      boards[bIndex].cards[cardIndex].name = newName;
+      const boardIndex = boards.findIndex(b => b.id === boardId);
+      const cardIndex = boards[boardIndex].cards.findIndex(
+        c => c.id === cardId
+      );
+      boards[boardIndex].cards[cardIndex].name = newName;
       setStore({ boards });
     },
     [boardId, boards, setStore]
+  );
+
+  const moveCard = useCallback(
+    (dir: 'right' | 'left', cardId: string) => {
+      if (!currentBoard) return;
+      const { cards, columns } = currentBoard;
+      const boardIndex = boards.findIndex(b => b.id === boardId);
+      const cardIndex = cards.findIndex(c => c.id === cardId);
+      const columnIndex = columns.findIndex(
+        c => c.id === cards[cardIndex].columnId
+      );
+      const newColumnIndex = columns.findIndex(
+        c =>
+          c.position ===
+          columns[columnIndex].position + (dir === 'right' ? +1 : -1)
+      );
+      boards[boardIndex].cards[cardIndex].columnId = columns[newColumnIndex].id;
+      setStore({ boards });
+    },
+    [boardId, boards, currentBoard, setStore]
   );
 
   return (
@@ -61,6 +83,7 @@ export const BoardAdapter = () => {
       cards={currentBoard?.cards || []}
       addCard={addCard}
       changeCardName={changeCardName}
+      moveCard={moveCard}
     />
   );
 };

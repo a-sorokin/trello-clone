@@ -1,0 +1,35 @@
+.openedCardWrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  top: 31px;
+  left: 0;
+  z-index: 5;
+}
+
+.openedCard {
+  position: fixed;
+  width: 600px;
+  height: 500px;
+  background-color: #fff;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  padding: 20px;
+  top: calc(50% - 300px);
+  left: calc(50% - 300px);
+  z-index: 10;
+}
+
+.close {
+  &:after {
+    position: absolute;
+    display: inline-block;
+    content: '\00d7';
+    scale: 1.5;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+  }
+}
