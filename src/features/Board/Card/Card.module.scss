@@ -1,20 +1,16 @@
-.addCard {
+.card {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   border: 1px solid var(--border-color);
   border-radius: 3px;
-  margin-top: 10px;
   width: 95%;
   height: 30px;
-  //margin-left: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #efefef;
 
   &:hover {
     border: 1px solid var(--border-color-hover);
   }
-}
-
-.add {
-  display: flex;
 }

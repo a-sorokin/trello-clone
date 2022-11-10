@@ -13,6 +13,7 @@ type TBoardProps = {
   boardName: string;
   changeListName: (newName: string, position: number) => void;
   cards: TCard[];
+  addCard: (name: string, columnId: string) => void;
 };
 
 export const Board: FC<TBoardProps> = ({
@@ -21,6 +22,7 @@ export const Board: FC<TBoardProps> = ({
   boardName,
   changeListName,
   cards,
+  addCard,
 }) => {
   const changeNameHandler = useCallback(
     (name: string, position: number) => changeListName(name, position),
@@ -39,18 +41,17 @@ export const Board: FC<TBoardProps> = ({
             <List key={c.id}>
               <>
                 <ListName
-                  className={s.listName}
                   name={c.name}
                   changeNameHandler={(name: string) => {
                     changeNameHandler(name, c.position);
                   }}
                 />
                 {cards
-                  .filter(card => card.column === c.id)
+                  .filter(card => card.columnId === c.id)
                   .map(card => (
-                    <Card />
+                    <Card key={card.id} name={card.name} />
                   ))}
-                <AddCard />
+                <AddCard addCard={name => addCard(name, c.id)} />
               </>
             </List>
           ))}

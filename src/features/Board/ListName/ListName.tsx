@@ -1,10 +1,10 @@
 import { FC, useCallback, useRef, useState } from 'react';
+import s from './ListName.module.scss';
 
 export const ListName: FC<{
-  className: string;
   name: string;
   changeNameHandler: (name: string) => void;
-}> = ({ className, name, changeNameHandler }) => {
+}> = ({ name, changeNameHandler }) => {
   const [changeMode, setChangeMode] = useState(false);
   const ref = useRef<any>(null);
 
@@ -16,7 +16,7 @@ export const ListName: FC<{
   }, [changeNameHandler]);
 
   return (
-    <div className={className} onClick={() => setChangeMode(true)}>
+    <div className={s.listName} onClick={() => setChangeMode(true)}>
       {changeMode ? (
         <div>
           <input type="text" ref={ref} placeholder={name} autoFocus />

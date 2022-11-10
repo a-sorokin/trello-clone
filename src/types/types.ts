@@ -12,7 +12,7 @@ export type TWorkspaces = {
 export type TCard = {
   id: string;
   name: string;
-  column: string; // TBoardColumn.id
+  columnId: string; // TBoardColumn.id
   description: string;
 };
 
