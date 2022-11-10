@@ -1,0 +1,23 @@
+.board {
+  margin: 20px;
+}
+
+.name {
+  margin-bottom: 10px;
+}
+
+.lists {
+  display: flex;
+  max-width: calc(100vw - 250px);
+  overflow: scroll;
+}
+
+.listName {
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+
+  &:hover {
+    border: 1px solid var(--border-color-hover);
+  }
+}

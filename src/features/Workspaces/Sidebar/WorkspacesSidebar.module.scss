@@ -1,0 +1,39 @@
+.sidebar {
+  border-right: 1px solid var(--border-color);
+  max-width: 200px;
+  height: 100vh;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.workspace {
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: underline var(--border-color);
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline var(--border-color-hover);
+  }
+}
+
+.back {
+  cursor: pointer;
+  text-decoration: underline var(--border-color);
+
+  &:hover {
+    text-decoration: underline var(--border-color-hover);
+  }
+}
+
+.boardName {
+  margin-left: 15px;
+  margin-top: 3px;
+  cursor: pointer;
+  text-decoration: underline var(--border-color);
+  font-weight: normal;
+
+  &:hover {
+    text-decoration: underline var(--border-color-hover);
+  }
+}
