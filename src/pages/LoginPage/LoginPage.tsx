@@ -23,7 +23,7 @@ export const LoginPage = () => {
 
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" ref={nameRef} />
+          <input type="text" name="name" id="name" ref={nameRef} autoFocus />
         </div>
 
         <div>

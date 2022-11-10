@@ -30,7 +30,12 @@ export const NewList: FC<{
     <div className={s.newList} onClick={editHandler} ref={ref}>
       {editMode ? (
         <div>
-          <input type="text" placeholder="Enter list title" ref={ref} />
+          <input
+            type="text"
+            placeholder="Enter list title"
+            ref={ref}
+            autoFocus
+          />
           <button
             onClick={e => {
               e.stopPropagation();

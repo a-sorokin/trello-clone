@@ -23,7 +23,13 @@ export const BoardsTable: FC<{
         <div>Add board</div>
         <div>
           <label htmlFor="workspace-name">Name</label>
-          <input type="text" name="name" id="workspace-name" ref={nameRef} />
+          <input
+            type="text"
+            name="name"
+            id="workspace-name"
+            ref={nameRef}
+            autoFocus
+          />
         </div>
         <button onClick={addTableHandler}>Add</button>
       </section>

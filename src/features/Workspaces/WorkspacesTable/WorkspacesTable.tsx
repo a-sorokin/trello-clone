@@ -24,7 +24,13 @@ export const WorkspacesTable: FC<{
         <div>Add workspace</div>
         <div>
           <label htmlFor="workspace-name">Name</label>
-          <input type="text" name="name" id="workspace-name" ref={nameRef} />
+          <input
+            type="text"
+            name="name"
+            id="workspace-name"
+            ref={nameRef}
+            autoFocus
+          />
         </div>
         <div>
           <label htmlFor="desc">Description</label>

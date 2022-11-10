@@ -42,6 +42,16 @@ export const BoardAdapter = () => {
     [boardId, boards, setStore]
   );
 
+  const changeCardName = useCallback(
+    (newName: string, cardId: string) => {
+      const bIndex = boards.findIndex(b => b.id === boardId);
+      const cardIndex = boards[bIndex].cards.findIndex(c => c.id === cardId);
+      boards[bIndex].cards[cardIndex].name = newName;
+      setStore({ boards });
+    },
+    [boardId, boards, setStore]
+  );
+
   return (
     <Board
       columns={currentBoard?.columns || []}
@@ -50,6 +60,7 @@ export const BoardAdapter = () => {
       changeListName={changeListName}
       cards={currentBoard?.cards || []}
       addCard={addCard}
+      changeCardName={changeCardName}
     />
   );
 };
