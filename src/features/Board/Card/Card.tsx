@@ -2,7 +2,6 @@ import { FC, useCallback, useRef, useState } from 'react';
 import s from './Card.module.scss';
 import { EditCard } from 'features/Board/Card/EditCard';
 import { TCard } from 'types/types';
-// import { OpenedCard } from 'features/Board/OpenedCard/OpenedCard';
 
 export const Card: FC<{
   card: TCard;
@@ -12,7 +11,6 @@ export const Card: FC<{
   moveCard: (dir: 'right' | 'left') => void;
 }> = ({ card, changeCardName, first, last, moveCard }) => {
   const [changeMode, setChangeMode] = useState(false);
-  // const [cardIsOpen, setCardIsOpen] = useState(false);
   const ref = useRef<any>(null);
 
   const editNameHandler = useCallback(() => {
@@ -21,16 +19,6 @@ export const Card: FC<{
     if (!name) return;
     changeCardName(name);
   }, [changeCardName]);
-
-  // const openCardHandler = useCallback(() => {
-  //   if (!changeMode) {
-  //     setCardIsOpen(true);
-  //   }
-  // }, [changeMode]);
-  //
-  // const closeCard = useCallback(() => {
-  //   setCardIsOpen(false);
-  // }, []);
 
   return (
     <>
@@ -62,7 +50,6 @@ export const Card: FC<{
           </>
         )}
       </div>
-      {/*{cardIsOpen && <OpenedCard closeCard={closeCard} />}*/}
     </>
   );
 };
