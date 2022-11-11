@@ -16,6 +16,7 @@ export const NewList: FC<{
 
   const addClickHandler = useCallback(() => {
     const title = ref.current.value;
+    setEditMode(false);
     if (!title) return;
 
     addList({
@@ -23,7 +24,6 @@ export const NewList: FC<{
       name: title,
       position,
     });
-    setEditMode(false);
   }, [addList, position, setEditMode]);
 
   return (

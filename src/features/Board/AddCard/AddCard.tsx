@@ -29,7 +29,7 @@ export const AddCard: FC<{
           </button>
         </div>
       ) : (
-        <span>AddCard</span>
+        <span>Add card</span>
       )}
     </div>
   );

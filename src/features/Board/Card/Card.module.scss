@@ -5,7 +5,6 @@
   border-radius: 3px;
   width: calc(100% - 25px);
   height: 60px;
-  cursor: pointer;
   margin-top: 10px;
   background-color: #efefef;
 
@@ -36,6 +35,7 @@
   width: 25px;
   height: 25px;
   margin-top: 5px;
+  cursor: pointer;
 
   &:hover {
     border: 1px solid black;
