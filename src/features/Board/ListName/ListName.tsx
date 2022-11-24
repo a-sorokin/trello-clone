@@ -6,10 +6,10 @@ export const ListName: FC<{
   changeNameHandler: (name: string) => void;
 }> = ({ name, changeNameHandler }) => {
   const [changeMode, setChangeMode] = useState(false);
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   const handler = useCallback(() => {
-    const name = ref.current.value.trim();
+    const name = ref?.current?.value.trim();
     setChangeMode(false);
     if (!name) return;
     changeNameHandler(name);

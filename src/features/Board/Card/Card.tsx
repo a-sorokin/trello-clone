@@ -11,10 +11,10 @@ export const Card: FC<{
   moveCard: (dir: 'right' | 'left') => void;
 }> = ({ card, changeCardName, first, last, moveCard }) => {
   const [changeMode, setChangeMode] = useState(false);
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   const editNameHandler = useCallback(() => {
-    const name = ref.current.value.trim();
+    const name = ref?.current?.value.trim();
     setChangeMode(false);
     if (!name) return;
     changeCardName(name);
@@ -29,13 +29,7 @@ export const Card: FC<{
           <>
             <div className={s.cardNameLine}>
               <span>{card.name}</span>
-              <span
-                className={s.edit}
-                onClick={e => {
-                  e.stopPropagation();
-                  setChangeMode(true);
-                }}
-              >
+              <span className={s.edit} onClick={() => setChangeMode(true)}>
                 ✎
               </span>
             </div>

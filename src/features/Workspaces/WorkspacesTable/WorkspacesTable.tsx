@@ -7,12 +7,12 @@ export const WorkspacesTable: FC<{
   addWorkspace: (name: string, description: string) => void;
   setActiveWorkspace: (id: string) => void;
 }> = ({ workspaces, addWorkspace, setActiveWorkspace }) => {
-  const nameRef = useRef<any>(null);
-  const descRef = useRef<any>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const descRef = useRef<HTMLInputElement>(null);
 
   const addWorkspaceHandler = useCallback(() => {
-    const name = nameRef.current.value;
-    const desc = descRef.current.value;
+    const name = nameRef?.current?.value;
+    const desc = descRef?.current?.value;
     if (name && desc) {
       addWorkspace(name, desc);
     }

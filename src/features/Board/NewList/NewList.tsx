@@ -8,14 +8,14 @@ export const NewList: FC<{
   position: number;
 }> = ({ addList, position }) => {
   const [editMode, setEditMode] = useState(false);
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLInputElement>(null);
 
   const editHandler = useCallback(() => {
     setEditMode(true);
   }, []);
 
   const addClickHandler = useCallback(() => {
-    const title = ref.current.value;
+    const title = ref?.current?.value;
     setEditMode(false);
     if (!title) return;
 

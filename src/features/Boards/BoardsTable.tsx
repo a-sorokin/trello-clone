@@ -8,10 +8,10 @@ export const BoardsTable: FC<{
   setActiveBoard: (id: string) => void;
   workspaceName: string;
 }> = ({ boards, addBoard, setActiveBoard, workspaceName }) => {
-  const nameRef = useRef<any>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
 
   const addTableHandler = useCallback(() => {
-    const name = nameRef.current.value;
+    const name = nameRef?.current?.value;
     if (name) addBoard(name);
   }, [addBoard]);
 

@@ -4,14 +4,14 @@ import { Navigate } from 'react-router-dom';
 import style from './LoginPage.module.scss';
 
 export const LoginPage = () => {
-  const nameRef = useRef<any>(null);
-  const orgRef = useRef<any>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const orgRef = useRef<HTMLInputElement>(null);
   const [user, setStore] = useStore(store => store.user);
   const addUser = useCallback(() => {
     setStore({
       user: {
-        name: nameRef.current.value,
-        organization: orgRef.current.value,
+        name: nameRef?.current?.value || '',
+        organization: orgRef?.current?.value || '',
       },
     });
   }, [setStore]);
